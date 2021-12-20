@@ -60,7 +60,7 @@ final class ESQL extends Base
             }
 
             $columnName = "{$this->alias}.{$fieldMapping['columnName']}";
-            $aliased = " as {$this->alias}_{$fieldName}";
+            $aliased = " as \"{$this->alias}_{$fieldName}\"";
             $columns[] = $onlyColumnNames ? $columnName : $columnName.$aliased;
         }
 
@@ -82,7 +82,7 @@ final class ESQL extends Base
 
             foreach ($association['joinColumns'] as $i => $joinColumn) {
                 $columnName = "$this->alias.{$joinColumn['name']}";
-                $aliased = " as {$relationAlias}_{$joinColumn['referencedColumnName']}";
+                $aliased = " as \"{$relationAlias}_{$joinColumn['referencedColumnName']}\"";
                 $columns[] = $onlyColumnNames ? $columnName : $columnName.$aliased;
             }
         }
